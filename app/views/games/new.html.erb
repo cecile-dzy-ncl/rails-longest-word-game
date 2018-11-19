@@ -3,18 +3,19 @@
 <div class="container">
   <div class="row">
     <% @letters.each do |letter| %>
-      <div class="col-sm-2" id="letters">
+      <div class="col-sm-1" id="letters">
         <p><%= letter %></p>
       </div>
     <% end %>
   </div>
 </div>
 
-<div class="container">
-  <form action="/score" method="post">
+<div class="container form">
+  <form action="/score" method="post" class="form-inline">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <input type="text" name="word" placeholder="Word">
-    <input type="submit">
+    <%= hidden_field_tag "letters", @letters %>
+    <input class="form-control input-lg" type="text" name="word" placeholder="Word">
+    <button type="submit" class="btn btn-blue" value="Play">Play</button>
   </form>
 </div>
 <!-- The new action will be used to display a new random grid and a form.
